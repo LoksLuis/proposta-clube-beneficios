@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta - App Clube de Beneficios</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAFAF8;--surface:#FFF;--text:#1A1A1A;--text-muted:#6B6B6B;--accent:#2563EB;--accent-light:#EFF6FF;--border:#E8E8E4;--green:#059669;--green-light:#ECFDF5;--amber:#D97706;--amber-light:#FFFBEB;--purple:#7C3AED;--purple-light:#F5F3FF}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.container{max-width:800px;margin:0 auto;padding:40px 24px}
+.header{text-align:center;padding:60px 0 48px;border-bottom:1px solid var(--border);margin-bottom:48px}
+.badge{display:inline-block;background:var(--accent-light);color:var(--accent);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:20px}
+.header h1{font-family:'Fraunces',serif;font-size:36px;font-weight:800;line-height:1.2;margin-bottom:12px}
+.header p{font-size:16px;color:var(--text-muted);max-width:540px;margin:0 auto}
+.meta{display:flex;justify-content:center;gap:24px;margin-top:24px;font-size:13px;color:var(--text-muted)}
+.section{margin-bottom:48px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.section h2{font-family:'Fraunces',serif;font-size:24px;font-weight:700;margin-bottom:16px}
+.section p{color:var(--text-muted);font-size:15px;margin-bottom:16px}
+.dual-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px 24px}
+.card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.card p{font-size:14px;color:var(--text-muted);margin:0;line-height:1.5}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.tag.site{background:var(--accent-light);color:var(--accent)}
+.tag.app{background:var(--green-light);color:var(--green)}
+.feature-list{margin-top:20px;display:flex;flex-direction:column;gap:12px}
+.feature-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:16px}
+.feature-num{width:32px;height:32px;min-width:32px;border-radius:10px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.feature-item h4{font-size:15px;font-weight:600;margin-bottom:4px}
+.feature-item p{font-size:13px;color:var(--text-muted);margin:0}
+.card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.card-icon.blue{background:var(--accent-light)}
+.card-icon.green{background:var(--green-light)}
+.card-icon.purple{background:var(--purple-light)}
+.card-icon.amber{background:var(--amber-light)}
+.flow{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;margin-top:20px}
+.flow-step{display:flex;align-items:flex-start;gap:16px;padding-bottom:28px}
+.flow-step:last-child{padding-bottom:0}
+.flow-dot-col{display:flex;flex-direction:column;align-items:center;min-width:40px}
+.flow-dot{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
+.flow-dot.blue{background:var(--accent-light)}
+.flow-dot.green{background:var(--green-light)}
+.flow-line{width:2px;flex:1;background:var(--border);min-height:20px}
+.flow-content{padding-top:8px}
+.flow-content h4{font-size:14px;font-weight:600;margin-bottom:2px}
+.flow-content p{font-size:13px;color:var(--text-muted);margin:0}
+.sync-box{background:linear-gradient(135deg,var(--accent-light),var(--purple-light));border:1px solid var(--border);border-radius:16px;padding:32px;margin-top:20px;text-align:center}
+.sync-box h3{font-family:'Fraunces',serif;font-size:20px;font-weight:700;margin-bottom:12px}
+.sync-visual{display:flex;align-items:center;justify-content:center;gap:24px;margin:24px 0}
+.sync-node{background:var(--surface);border:2px solid var(--border);border-radius:14px;padding:16px 28px;font-weight:600;font-size:15px}
+.sync-arrows{color:var(--accent);font-size:20px;font-weight:700}
+.questions{background:var(--amber-light);border:1px solid #FDE68A;border-radius:16px;padding:28px;margin-top:20px}
+.questions h3{font-size:16px;font-weight:700;margin-bottom:16px}
+.q-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.q-num{min-width:24px;height:24px;border-radius:6px;background:var(--amber);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.q-item p{font-size:14px;color:var(--text);margin:0;line-height:1.5}
+.cta{text-align:center;padding:48px 0;border-top:1px solid var(--border);margin-top:48px}
+.cta p{font-size:15px;color:var(--text-muted);margin-bottom:8px}
+.cta .name{font-family:'Fraunces',serif;font-size:18px;font-weight:700}
+@media(max-width:640px){.dual-cards{grid-template-columns:1fr}.header h1{font-size:28px}.sync-visual{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="badge">Proposta de Projeto</div>
+<h1>App Clube de Beneficios</h1>
+<p>Resumo da solucao proposta para validacao - Site + Aplicativo integrados para gestao de clientes de clinicas e oticas.</p>
+<div class="meta"><span>Fevereiro 2026</span><span>Documento para validacao</span></div>
+</div>
+<div class="section">
+<div class="section-label">01 - Visao Geral</div>
+<h2>O que e o projeto?</h2>
+<p>A solucao e composta por duas frentes que trabalham juntas: um <strong>Site</strong> e um <strong>Aplicativo mobile</strong> (disponivel na Play Store). Juntos, eles formam a base digital do <strong>Clube de Beneficios</strong>, atendendo tanto clinicas quanto oticas.</p>
+<div class="dual-cards">
+<div class="card"><div class="tag site">SITE</div><h3>Vitrine + Captacao</h3><p>Funciona como cartao de visita digital da empresa. E por onde novos clientes conhecem o Clube de Beneficios, fazem o cadastro inicial, acessam o blog e o Instagram da empresa. Tambem integra com o Mercado Pago para pagamentos.</p></div>
+<div class="card"><div class="tag app">APLICATIVO</div><h3>Operacional + Dia a Dia</h3><p>Onde a magica acontece. O atendente cadastra clientes na hora, e o associado usa o app para agendar consultas, confirmar horarios, receber lembretes e se comunicar com a clinica/otica. E a ferramenta do cotidiano.</p></div>
+</div></div>
+<div class="section">
+<div class="section-label">02 - Funcionalidades</div>
+<h2>O que o aplicativo faz?</h2>
+<p>O app e o coracao operacional da solucao. Veja as principais funcionalidades previstas:</p>
+<div class="feature-list">
+<div class="feature-item"><div class="feature-num">1</div><div><h4>Cadastro de Clientes</h4><p>O atendente da clinica ou otica cadastra o cliente diretamente no app na hora do atendimento, inscrevendo-o no Clube de Beneficios.</p></div></div>
+<div class="feature-item"><div class="feature-num">2</div><div><h4>Agendamento de Consultas</h4><p>O cliente associado agenda suas consultas diretamente pelo aplicativo, sem precisar ligar ou ir ao site.</p></div></div>
+<div class="feature-item"><div class="feature-num">3</div><div><h4>Confirmacao de Horario</h4><p>O cliente confirma presenca no horario agendado, dando visibilidade para a clinica/otica organizar a agenda.</p></div></div>
+<div class="feature-item"><div class="feature-num">4</div><div><h4>Aviso de Atraso</h4><p>Se o cliente vai se atrasar, ele informa diretamente pelo app, permitindo que a equipe se reorganize.</p></div></div>
+<div class="feature-item"><div class="feature-num">5</div><div><h4>Notificacoes e Lembretes</h4><p>Notificacoes automaticas como: "Falta 30 minutos para sua consulta", lembretes de retorno, check-up semestral e ate parabens de aniversario.</p></div></div>
+<div class="feature-item"><div class="feature-num">6</div><div><h4>Gestao de Clientes</h4><p>Visao completa do associado: historico de consultas, proximos agendamentos, status no clube - tudo em um so lugar.</p></div></div>
+</div></div>
+<div class="section">
+<div class="section-label">03 - Integracao</div>
+<h2>Como Site e App se conectam?</h2>
+<p>O ponto mais importante: Site e App compartilham a mesma base de dados. Tudo que acontece em um, reflete no outro em tempo real.</p>
+<div class="sync-box">
+<h3>Base de Dados Unica e Sincronizada</h3>
+<div class="sync-visual"><div class="sync-node">Site</div><div class="sync-arrows">&#8596;</div><div class="sync-node">App</div></div>
+<p style="font-size:14px;color:var(--text-muted)">Cadastro feito no site aparece no app.<br>Cadastro feito no app aparece no site.<br>Mesma base, mesmos dados, sempre atualizado.</p>
+</div></div>
+<div class="section">
+<div class="section-label">04 - Integracoes</div>
+<h2>Com o que o sistema se conecta?</h2>
+<div class="dual-cards">
+<div class="card"><div class="card-icon blue">&#128179;</div><h3>Mercado Pago</h3><p>Pagamentos e cobrancas do Clube de Beneficios integrados ao site.</p></div>
+<div class="card"><div class="card-icon purple">&#128248;</div><h3>Instagram</h3><p>Feed da empresa conectado ao site, funcionando como canal de engajamento.</p></div>
+<div class="card"><div class="card-icon green">&#128242;</div><h3>Play Store</h3><p>App publicado na Google Play Store para os associados baixarem.</p></div>
+<div class="card"><div class="card-icon amber">&#128221;</div><h3>Blog</h3><p>Secao de conteudo no site para atrair e engajar potenciais associados.</p></div>
+</div></div>
+<div class="section">
+<div class="section-label">05 - Jornada do Cliente</div>
+<h2>Como funciona na pratica?</h2>
+<div class="flow">
+<div class="flow-step"><div class="flow-dot-col"><div class="flow-dot blue">&#128269;</div><div class="flow-line"></div></div><div class="flow-content"><h4>Descoberta</h4><p>Cliente conhece o Clube de Beneficios pelo site, blog ou Instagram da empresa.</p></div></div>
+<div class="flow-step"><div class="flow-dot-col"><div class="flow-dot blue">&#9997;</div><div class="flow-line"></div></div><div class="flow-content"><h4>Cadastro</h4><p>Faz o cadastro pelo site ou e cadastrado pelo atendente no app (atendimento presencial).</p></div></div>
+<div class="flow-step"><div class="flow-dot-col"><div class="flow-dot green">&#128241;</div><div class="flow-line"></div></div><div class="flow-content"><h4>Download do App</h4><p>Baixa o aplicativo na Play Store para ter acesso ao dia a dia do clube.</p></div></div>
+<div class="flow-step"><div class="flow-dot-col"><div class="flow-dot green">&#128197;</div><div class="flow-line"></div></div><div class="flow-content"><h4>Agendamento</h4><p>Agenda consultas, confirma horarios e recebe lembretes automaticos - tudo pelo app.</p></div></div>
+<div class="flow-step"><div class="flow-dot-col"><div class="flow-dot green">&#128260;</div></div><div class="flow-content"><h4>Relacionamento Continuo</h4><p>Recebe notificacoes de retorno, parabens de aniversario, lembretes de check-up. Fidelizacao automatica.</p></div></div>
+</div></div>
+<div class="section">
+<div class="section-label">06 - Validacao</div>
+<h2>Pontos para alinhar</h2>
+<p>Para seguirmos com precisao, precisamos confirmar alguns pontos:</p>
+<div class="questions">
+<h3>Perguntas para validacao</h3>
+<div class="q-item"><div class="q-num">1</div><p>O resumo acima reflete a ideia do projeto? Algo ficou faltando ou precisa ser ajustado?</p></div>
+<div class="q-item"><div class="q-num">2</div><p>O app sera somente para Android (Play Store) ou tambem para iOS (App Store)?</p></div>
+<div class="q-item"><div class="q-num">3</div><p>A clinica e a otica ja possuem algum sistema de agenda ou controle de clientes hoje? Se sim, qual?</p></div>
+<div class="q-item"><div class="q-num">4</div><p>Como funciona a monetizacao do Clube? E assinatura mensal, taxa unica, ou outro modelo?</p></div>
+<div class="q-item"><div class="q-num">5</div><p>Qual a estimativa de associados que espera ter nos primeiros meses?</p></div>
+</div></div>
+<div class="cta">
+<p>Documento preparado por</p>
+<div class="name">Atom IA Solutions</div>
+<p style="margin-top:4px;font-size:13px">Automacao inteligente para empresas que querem crescer</p>
+</div>
+</div>
+</body>
+  </html>
